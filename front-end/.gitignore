@@ -21,6 +21,6 @@ yarn-error.log*
 *.sw*
 
 #config files
-.eslint.js
+.eslintrc.js
 *.config.js
 .browserslistrc
