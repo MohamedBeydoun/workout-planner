@@ -25,7 +25,7 @@
             </v-btn>
         </v-toolbar>
 
-        <v-navigation-drawer app class="primary" v-model="drawer">
+        <v-navigation-drawer app class="secondary" v-model="drawer">
             <v-layout column align-center>
                 <v-flex class="mt-5">
                     <v-avatar size="100">

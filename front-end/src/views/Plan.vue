@@ -4,7 +4,7 @@
         <h1 class="my-2 subheading secondary--text text-uppercase">{{ plan.name }}</h1>
         <v-container class="my-5">
             <!-- Schedule expansion pannel -->
-            <h1 class="display-1 text-uppercase white--text">schedule</h1>
+            <h1 class="display-1 text-uppercase white--text mb-1">schedule</h1>
             <v-expansion-panel expand>
                 <v-expansion-panel-content
                     :key="day.date"
@@ -25,8 +25,26 @@
                 </v-expansion-panel-content>
             </v-expansion-panel>
 
-            <!-- Meal plan card -->
-            <h1 class="display-1 text-uppercase white--text mt-5">meal plan</h1>
+            <!-- Meal plan expansion panel -->
+            <h1 class="display-1 text-uppercase white--text mt-5 mb-1">meal plan</h1>
+            <v-expansion-panel expand>
+                <v-expansion-panel-content
+                    :key="meal.title"
+                    v-for="meal in plan.mealPlan"
+                    class="primary background--text"
+                >
+                    <div slot="header" class="text-uppercase">{{ meal.title }}</div>
+                    <v-card>
+                        <v-card-text class="px-4 grey--text subtext1">
+                            <div
+                                :key="mealPart"
+                                v-for="mealPart in meal.meal"
+                                class="my-1"
+                            >{{ mealPart }}</div>
+                        </v-card-text>
+                    </v-card>
+                </v-expansion-panel-content>
+            </v-expansion-panel>
         </v-container>
     </div>
 </template>
@@ -87,25 +105,46 @@
                             workouts: [{ name: "N/A" }]
                         }
                     ],
-                    mealPlan: {
-                        meal1: [
-                            "egg whites",
-                            "lean meat",
-                            "oatmeal",
-                            "blueberries"
-                        ],
-                        meal2: ["chicken", "white rice", "broccoli"],
-                        meal3: ["lean turkey", "sweet potato", "asparagus"],
-                        meal4: ["whey protein shake"],
-                        meal5: ["bagel", "almond butter"],
-                        meal6: [
-                            "sirloin steak",
-                            "sweet potato",
-                            "green beans",
-                            "almonds"
-                        ],
-                        meal7: ["egg whites", "almond butter"]
-                    }
+                    mealPlan: [
+                        {
+                            title: "breakfast",
+                            meal: [
+                                "egg whites",
+                                "lean meat",
+                                "oatmeal",
+                                "blueberries"
+                            ]
+                        },
+                        {
+                            title: "meal 2",
+                            meal: ["chicken", "white rice", "broccoli"]
+                        },
+                        {
+                            title: "meal 3",
+                            meal: ["lean turkey", "sweet potato", "asparagus"]
+                        },
+                        {
+                            title: "post-workout",
+                            meal: ["whey protein shake"]
+                        },
+                        {
+                            title: "afternoon snack",
+                            meal: ["bagel", "almond butter"]
+                        },
+                        {
+                            title: "dinner",
+                            meal: [
+                                "sirloin steak",
+                                "sweet potato",
+                                "green beans",
+                                "almonds"
+                            ]
+                        },
+                        {
+                            title: "evening snack",
+                            meal: ["egg whites", "almond butter"]
+                        }
+                    ]
                 }
             };
         },

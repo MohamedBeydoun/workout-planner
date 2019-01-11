@@ -25,5 +25,10 @@
 </script>
 
 <style>
+    @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+    html {
+        font-family: "Lato", sans-serif;
+    }
 </style>
 
