@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <v-toolbar flat app style="background: inherit">
+        <v-toolbar flat app class="background">
             <v-toolbar-side-icon class="primary--text" @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title class="text-uppercase primary--text">
                 <span class="font-weight-light">Workout</span>
@@ -29,7 +29,7 @@
             <v-layout column align-center>
                 <v-flex class="mt-5">
                     <v-avatar size="100">
-                        <img src="https://www.gravatar.com/avatar/HASH">
+                        <img src="/avatar-placeholder.jpeg">
                     </v-avatar>
                     <p class="background--text text-xs-center subheading mt-1">User</p>
                 </v-flex>
@@ -57,7 +57,7 @@
                 links: [
                     { icon: "dashboard", text: "Dashboard", route: "/" },
                     { icon: "person", text: "Connect", route: "/connect" },
-                    { icon: "folder", text: "About", route: "/about" }
+                    { icon: "info", text: "About", route: "/about" }
                 ]
             };
         }
