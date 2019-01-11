@@ -1,15 +1,21 @@
 <template>
-    <v-app></v-app>
+    <v-app class="background">
+        <app-navbar/>
+        <v-content class="mx-4 mb-4">
+            <router-view></router-view>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-    import HelloWorld from "./components/HelloWorld";
+    import Navbar from "./components/Navbar";
 
     export default {
         name: "App",
         components: {
-            HelloWorld
+            "app-navbar": Navbar
         },
+
         data() {
             return {
                 //
@@ -17,3 +23,7 @@
         }
     };
 </script>
+
+<style>
+</style>
+
