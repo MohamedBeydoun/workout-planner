@@ -48,6 +48,12 @@ app.post("/api/login", (req, res, next) => {
     })(req, res, next);
 });
 
+app.get("/api/logout", (req, res) => {
+    req.logout;
+    console.log("logged out");
+    return res.send();
+});
+
 ////////////////////////////////////////////
 app.listen(8081, () => {
     console.log("Server listening on port 8081...")
