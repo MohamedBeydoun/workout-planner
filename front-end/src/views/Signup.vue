@@ -1,10 +1,12 @@
 <template>
     <div id="login">
-        <h1 class="my-2 subheading secondary--text text-uppercase">login</h1>
+        <h1 class="my-2 subheading secondary--text text-uppercase">sign up</h1>
         <v-container class="my-5">
             <v-card color="primary ma-5 px-3 py-5">
                 <v-form class="px-3" ref="form">
                     <v-text-field
+                        type="username"
+                        name="username"
                         color="background"
                         class="mb-3"
                         label="Username"
@@ -13,6 +15,8 @@
                         required
                     ></v-text-field>
                     <v-text-field
+                        type="email"
+                        name="email"
                         color="background"
                         class="mb-3"
                         label="Email"
@@ -21,6 +25,8 @@
                         required
                     ></v-text-field>
                     <v-text-field
+                        type="password"
+                        name="password"
                         color="background"
                         class="mb-3"
                         label="Password"
@@ -31,6 +37,7 @@
                     <v-btn
                         class="background mx-0 mt-3 primary--text text-uppercase"
                         :loading="isLoading"
+                        @click="signup"
                     >login</v-btn>
                 </v-form>
             </v-card>
@@ -50,6 +57,12 @@
                 // ],
                 isLoading: false
             };
+        },
+
+        methods: {
+            signup() {
+                console.log("signup button was pressed");
+            }
         }
     };
 </script>

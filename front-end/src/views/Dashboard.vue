@@ -11,13 +11,13 @@
             >See current and previous plans</h6>
             <v-layout wrap row>
                 <v-flex :key="plan.name" v-for="plan in plans" xs12 sm6 md4 lg3>
-                    <v-card class="primary text-xs-center ma-3" flat hover elevation="6">
+                    <v-card class="primary text-xs-center ma-3" flat>
                         <v-card-text>
-                            <div class="my-1 text-uppercase white--text">{{ plan.name }}</div>
+                            <div class="my-1 text-uppercase subtext1--text">{{ plan.name }}</div>
                             <v-divider></v-divider>
-                            <div class="my-1 text-uppercase white--text">{{ plan.difficulty }}</div>
+                            <div class="my-1 text-uppercase subtext1--text">{{ plan.difficulty }}</div>
                             <v-divider></v-divider>
-                            <div class="my-1 text-uppercase white--text">{{ plan.target }}</div>
+                            <div class="my-1 text-uppercase subtext1--text">{{ plan.target }}</div>
                             <v-divider></v-divider>
                         </v-card-text>
                         <v-card-actions>

@@ -11,7 +11,6 @@
                         label="Email"
                         v-model="email"
                         prepend-icon="person"
-                        :rules="inputRules"
                         required
                     ></v-text-field>
                     <v-text-field
@@ -21,7 +20,6 @@
                         label="Password"
                         v-model="password"
                         prepend-icon="vpn_key"
-                        :rules="inputRules"
                         required
                     ></v-text-field>
                     <v-btn
@@ -43,9 +41,9 @@
             return {
                 email: "",
                 password: "",
-                inputRules: [
-                    v => v.length >= 3 || "Minimum length is 3 characters"
-                ],
+                // inputRules: [
+                //     v => v.length >= 3 || "Minimum length is 3 characters"
+                // ],
                 isLoading: false
             };
         },
