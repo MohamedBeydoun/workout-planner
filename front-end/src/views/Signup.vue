@@ -46,22 +46,26 @@
 </template>
 
 <script>
+    import AuthenticationService from "@/services/AuthenticationService";
+
     export default {
         data() {
             return {
                 username: "",
                 email: "",
                 password: "",
-                // inputRules: [
-                //     v => v.length >= 3 || "Minimum length is 3 characters"
-                // ],
                 isLoading: false
             };
         },
 
         methods: {
-            signup() {
-                console.log("signup button was pressed");
+            async signup() {
+                const response = await AuthenticationService.register({
+                    username: this.username,
+                    email: this.email,
+                    password: this.password
+                });
+                console.log(response.data);
             }
         }
     };

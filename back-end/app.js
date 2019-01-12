@@ -1,11 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const passport = require("passport");
+const cors = require("cors");
+const morgan = require("morgan");
+let mongoose = require("mongoose");
 const app = express();
 
-app.use(bodyParser.json());
+mongoose.connect("mongodb://localhost/workout-planner", { useNewUrlParser: true });
 
-app.post("/signup", (req, res) => {
+app.use(bodyParser.json());
+app.use(morgan("combined"));
+app.use(cors());
+
+app.post("/register", (req, res) => {
     res.send({
         message: "You are registered!",
     });
