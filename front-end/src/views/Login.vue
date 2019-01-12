@@ -43,6 +43,31 @@
                 ],
                 isLoading: false
             };
+        },
+
+        methods: {
+            login(e) {
+                e.preventDefault();
+                let email = "username@email.com";
+                let password = "password";
+                let login = () => {
+                    let data = {
+                        email: email,
+                        password: password
+                    };
+                    axios
+                        .post("/api/login", data)
+                        .then(response => {
+                            console.log("Logged in");
+                            router.push("/dashboard");
+                        })
+                        .catch(err => {
+                            console.log("Cannot login");
+                            console.log(err);
+                        });
+                };
+                login();
+            }
         }
     };
 </script>
