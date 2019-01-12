@@ -59,7 +59,9 @@
                     { icon: "info", text: "About", route: "/about" }
                 ]
             };
-        }
+        },
+
+        methods: {}
     };
 </script>
 

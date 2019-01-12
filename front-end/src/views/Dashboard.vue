@@ -38,6 +38,10 @@
         data() {
             return {
                 //dummy data
+                user: {
+                    name: "username"
+                },
+
                 plans: [
                     {
                         name: "push-pull",
@@ -66,6 +70,8 @@
                 ]
             };
         },
+
+        methods: {},
 
         created() {
             //get plan data from backend

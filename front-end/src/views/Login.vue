@@ -5,6 +5,7 @@
             <v-card color="primary ma-5 px-3 py-5">
                 <v-form class="px-3" ref="form">
                     <v-text-field
+                        name="email"
                         color="background"
                         class="mb-3"
                         label="Email"
@@ -14,6 +15,7 @@
                         required
                     ></v-text-field>
                     <v-text-field
+                        name="password"
                         color="background"
                         class="mb-3"
                         label="Password"
@@ -33,6 +35,9 @@
 </template>
 
 <script>
+    import axios from "axios";
+    import router from "../router";
+
     export default {
         data() {
             return {
@@ -45,30 +50,7 @@
             };
         },
 
-        methods: {
-            login(e) {
-                e.preventDefault();
-                let email = "username@email.com";
-                let password = "password";
-                let login = () => {
-                    let data = {
-                        email: email,
-                        password: password
-                    };
-                    axios
-                        .post("/api/login", data)
-                        .then(response => {
-                            console.log("Logged in");
-                            router.push("/dashboard");
-                        })
-                        .catch(err => {
-                            console.log("Cannot login");
-                            console.log(err);
-                        });
-                };
-                login();
-            }
-        }
+        methods: {}
     };
 </script>
 
