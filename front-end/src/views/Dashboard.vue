@@ -1,15 +1,17 @@
 <template>
     <div class="dashbaord">
-        <h1 class="my-2 subheading secondary--text">Dashboard</h1>
+        <h1 class="my-2 subheading secondary--text text-uppercase">Dashboard</h1>
 
         <v-container class="my-5">
-            <h1 class="white--text text-xs-center text-uppercase mb-2 display-3">Plans</h1>
+            <h1
+                class="white--text text-xs-center text-uppercase mb-2 display-3 font-weight-medium"
+            >Workout Plans</h1>
             <h6
                 class="subtext2--text text-xs-center text-uppercase mb-5 title"
             >See current and previous plans</h6>
             <v-layout wrap row>
                 <v-flex :key="plan.name" v-for="plan in plans" xs12 sm6 md4 lg3>
-                    <v-card class="primary text-xs-center ma-3" flat>
+                    <v-card class="primary text-xs-center ma-3" flat hover elevation="6">
                         <v-card-text>
                             <div class="my-1 text-uppercase white--text">{{ plan.name }}</div>
                             <v-divider></v-divider>

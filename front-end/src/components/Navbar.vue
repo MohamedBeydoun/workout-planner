@@ -8,17 +8,16 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
 
-            <v-menu offset-y>
-                <v-btn color="primary" slot="activator" flat>
-                    <v-icon>expand_more</v-icon>
-                    <span>Menu</span>
-                </v-btn>
-                <v-list class="background--text secondary">
-                    <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
-                        <v-list-tile-title>{{ link.text }}</v-list-tile-title>
-                    </v-list-tile>
-                </v-list>
-            </v-menu>
+            <v-btn
+                class="offset-y"
+                color="primary"
+                v-for="link in links"
+                :key="link.text"
+                router
+                :to="link.route"
+                flat
+            >{{ link.text }}</v-btn>
+
             <v-btn flat color="primary">
                 <span>logout</span>
                 <v-icon>exit_to_app</v-icon>

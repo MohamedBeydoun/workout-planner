@@ -1,7 +1,7 @@
 <template>
     <!-- <h1>plan id: {{ plan.id }}</h1> -->
     <div class="dashbaord">
-        <h1 class="my-2 subheading secondary--text text-uppercase">{{ plan.name }}</h1>
+        <h1 class="my-2 subheading secondary--text text-uppercase text-uppercase">{{ plan.name }}</h1>
         <v-container class="my-5">
             <!-- Schedule expansion pannel -->
             <h1 class="display-1 text-uppercase white--text mb-1">schedule</h1>
