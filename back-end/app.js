@@ -14,11 +14,7 @@ app.use(bodyParser.json());
 app.use(morgan("combined"));
 app.use(cors());
 
-app.post("/register", (req, res) => {
-    res.send({
-        message: "You are registered!",
-    });
-});
+require("./routes")(app);
 
 ////////////////////////////////////////////
 app.listen(8081, () => {
