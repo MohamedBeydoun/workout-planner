@@ -6,6 +6,7 @@ import Plan from "./views/Plan.vue";
 import Signup from "./views/Signup.vue";
 import Login from "./views/Login.vue";
 import Home from "./views/Home.vue";
+import RegisterPlan from "./views/RegisterPlan.vue"
 
 Vue.use(Router);
 
@@ -36,6 +37,10 @@ export default new Router({
         {
             path: "/signup",
             component: Signup
+        },
+        {
+            path: "/registerplan",
+            component: RegisterPlan
         }
     ]
 });

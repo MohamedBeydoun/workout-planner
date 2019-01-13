@@ -11,12 +11,20 @@
             <v-btn
                 class="offset-y"
                 color="primary"
-                v-for="link in links"
-                :key="link.text"
+                v-if="$store.state.isUserLoggedIn"
                 router
-                :to="link.route"
+                to="/dashboard"
                 flat
-            >{{ link.text }}</v-btn>
+            >dashboard</v-btn>
+
+            <v-btn
+                class="offset-y"
+                color="primary"
+                v-if="$store.state.isUserLoggedIn"
+                router
+                to="/registerplan"
+                flat
+            >register plan</v-btn>
 
             <v-btn v-if="$store.state.isUserLoggedIn" @click="logout" flat color="primary">
                 <span>logout</span>
@@ -69,8 +77,7 @@
             return {
                 drawer: false,
                 links: [
-                    { icon: "dashboard", text: "Dashboard", route: "/dashboard" },
-                    { icon: "info", text: "About", route: "/about" }
+                    { icon: "dashboard", text: "Dashboard", route: "/dashboard" }
                 ]
             };
         },
