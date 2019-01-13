@@ -7,8 +7,8 @@
             <h1 class="display-1 text-uppercase white--text mb-1">schedule</h1>
             <v-expansion-panel expand>
                 <v-expansion-panel-content
-                    :key="day.date"
-                    v-for="day in plan.schedule"
+                    :key="i"
+                    v-for="(day, i) in plan.schedule"
                     class="primary background--text"
                 >
                     <div slot="header" class="text-uppercase">{{ day.date }}</div>
@@ -16,8 +16,8 @@
                         <v-card-text class="px-4 grey--text subtext1">
                             <div class="font-weight-bold text-uppercase mb-3">{{ day.title }}</div>
                             <div
-                                :key="workout.name"
-                                v-for="workout in day.workouts"
+                                :key="i"
+                                v-for="(workout, i) in day.workouts"
                                 class="my-1"
                             >{{ workout.name }}: {{ workout.sets }} sets of {{ workout.reps }}</div>
                         </v-card-text>
@@ -29,16 +29,16 @@
             <h1 class="display-1 text-uppercase white--text mt-5 mb-1">meal plan</h1>
             <v-expansion-panel expand>
                 <v-expansion-panel-content
-                    :key="meal.title"
-                    v-for="meal in plan.mealPlan"
+                    :key="i"
+                    v-for="(meal, i) in plan.mealPlan"
                     class="primary background--text"
                 >
                     <div slot="header" class="text-uppercase">{{ meal.title }}</div>
                     <v-card>
                         <v-card-text class="px-4 grey--text subtext1">
                             <div
-                                :key="mealPart"
-                                v-for="mealPart in meal.meal"
+                                :key="i"
+                                v-for="(mealPart, i) in meal.meal"
                                 class="my-1"
                             >{{ mealPart }}</div>
                         </v-card-text>

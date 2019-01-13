@@ -5,9 +5,6 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const app = express();
 
-let User = require("./models/user");
-let Plan = require("./models/plan");
-
 app.use(bodyParser.json());
 app.use(morgan("combined"));
 app.use(cors());

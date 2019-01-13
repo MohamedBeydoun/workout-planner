@@ -2,7 +2,6 @@ import Vue from "vue";
 import Router from "vue-router";
 import Dashboard from "./views/Dashboard.vue";
 import About from "./views/About.vue";
-import Connect from "./views/Connect.vue";
 import Plan from "./views/Plan.vue";
 import Signup from "./views/Signup.vue";
 import Login from "./views/Login.vue";
@@ -20,10 +19,6 @@ export default new Router({
         {
             path: "/about",
             component: About
-        },
-        {
-            path: "/connect",
-            component: Connect
         },
         {
             path: "/plan/:id",

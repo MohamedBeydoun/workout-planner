@@ -9,6 +9,7 @@
                         color="background"
                         class="mb-3"
                         label="Email"
+                        @keyup.enter="login"
                         v-model="email"
                         prepend-icon="person"
                         required
@@ -19,12 +20,13 @@
                         class="mb-3"
                         label="Password"
                         v-model="password"
+                        @keyup.enter="login"
                         prepend-icon="vpn_key"
                         required
                     ></v-text-field>
                     <v-btn
                         class="background mx-0 mt-3 primary--text text-uppercase"
-                        :loading="isLoading"
+                        @click="login"
                     >login</v-btn>
                 </v-form>
             </v-card>
@@ -33,22 +35,29 @@
 </template>
 
 <script>
-    import axios from "axios";
-    import router from "../router";
+    import AuthenticationService from "@/services/AuthenticationService.js";
 
     export default {
         data() {
             return {
                 email: "",
                 password: "",
-                // inputRules: [
-                //     v => v.length >= 3 || "Minimum length is 3 characters"
-                // ],
-                isLoading: false
+                error: ""
             };
         },
 
-        methods: {}
+        methods: {
+            async login() {
+                try {
+                    await AuthenticationService.login({
+                        email: this.email,
+                        password: this.password
+                    });
+                } catch (err) {
+                    this.error = err.response.data.error;
+                }
+            }
+        }
     };
 </script>
 

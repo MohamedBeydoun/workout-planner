@@ -1,10 +1,11 @@
 let mongoose = require('mongoose');
 
+//how to identify each plan by id when it is added to user?
+//should i add user to plan schema for reference?
 let planSchema = new mongoose.Schema({
     name: String,
     difficulty: String,
     target: String,
-    id: String,
     schedule: [{
         title: String,
         date: String,

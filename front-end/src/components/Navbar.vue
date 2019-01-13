@@ -18,9 +18,17 @@
                 flat
             >{{ link.text }}</v-btn>
 
-            <v-btn flat color="primary">
+            <v-btn v-show="false" flat color="primary">
                 <span>logout</span>
                 <v-icon>exit_to_app</v-icon>
+            </v-btn>
+
+            <v-btn flat color="primary" router :to="'/login'">
+                <span>login</span>
+            </v-btn>
+
+            <v-btn flat color="primary" router :to="'/signup'">
+                <span>sign up</span>
             </v-btn>
         </v-toolbar>
 
@@ -55,7 +63,6 @@
                 drawer: false,
                 links: [
                     { icon: "dashboard", text: "Dashboard", route: "/" },
-                    { icon: "person", text: "Connect", route: "/connect" },
                     { icon: "info", text: "About", route: "/about" }
                 ]
             };
@@ -65,9 +72,3 @@
     };
 </script>
 
-<style>
-    .list__tile--active .list__tile__action,
-    .list__tile--active .list__tile__action .icon {
-        color: red;
-    }
-</style>

@@ -1,5 +1,4 @@
 let mongoose = require('mongoose');
-let Plan = require("./plan");
 
 let userSchema = new mongoose.Schema({
     username: {
@@ -16,10 +15,9 @@ let userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    plans: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Plan"
-    }]
+    plans: [
+        //add plan objects -- lookup how to
+    ]
 });
 
 module.exports = mongoose.model("User", userSchema);

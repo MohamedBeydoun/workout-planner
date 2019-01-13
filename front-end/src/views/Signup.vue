@@ -61,7 +61,7 @@
                 email: "",
                 password: "",
                 error: "",
-                errorOccured: false
+                errorOccured: false //not working --> FIX
             };
         },
 

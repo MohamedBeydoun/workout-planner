@@ -9,7 +9,7 @@ module.exports = {
                 password: req.body.password,
                 plans: []
             });
-            res.send(user.toJSON());
+            // res.send(user.toJSON());
         } catch (err) {
             res.status(400).send({
                 error: "This username or email is already in use",
