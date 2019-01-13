@@ -4,7 +4,7 @@ const config = require("../config/config");
 
 function jwtSignUser(user) {
     const ONE_WEEK = 60 * 60 * 24 * 7;
-    return jwt.sign(user, config.authenticate.jwtSecret, {
+    return jwt.sign(user, config.authentication.jwtSecret, {
         expiresIn: ONE_WEEK
     })
 }
@@ -20,8 +20,14 @@ module.exports = {
             });
             user.password = user.generateHash(user.password);
             user.save();
-            console.log(user.password);
-            // res.send(user.toJSON());
+
+            const userJson = user.toJSON();
+            console.log(userJson);
+            res.send({
+                user: userJson,
+                token: jwtSignUser(userJson)
+            });
+
         } catch (err) {
             res.status(400).send({
                 error: "This username or email is already in use",
@@ -33,21 +39,22 @@ module.exports = {
             const email = req.body.email;
             const password = req.body.password;
 
+            console.log("email:", email, "password:", password);
+
             const user = await User.findOne({
                 email: email
-            }, (err, user) => {
-                if (!user.validPassword(req.body.password)) {
-                    return res.status(403).send({
-                        error: "Incorrect login information (password)",
-                    });
-                }
             });
 
             if (!user) {
                 return res.status(403).send({
                     error: "Incorrect login information",
                 });
-            };
+            }
+            else if (!user.validPassword(password)) {
+                return res.status(403).send({
+                    error: "Incorrect login information (password)",
+                });
+            }
 
             // const isPasswordValid = password === user.password;
 
