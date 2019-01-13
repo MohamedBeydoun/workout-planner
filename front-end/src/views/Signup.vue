@@ -38,7 +38,7 @@
                         class="background mx-0 mt-3 primary--text text-uppercase"
                         :loading="isLoading"
                         @click="signup"
-                    >login</v-btn>
+                    >sign up</v-btn>
                 </v-form>
             </v-card>
         </v-container>
