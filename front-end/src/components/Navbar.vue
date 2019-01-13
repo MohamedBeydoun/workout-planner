@@ -18,27 +18,34 @@
                 flat
             >{{ link.text }}</v-btn>
 
-            <v-btn v-show="false" flat color="primary">
+            <v-btn v-if="$store.state.isUserLoggedIn" @click="logout" flat color="primary">
                 <span>logout</span>
                 <v-icon>exit_to_app</v-icon>
             </v-btn>
 
-            <v-btn flat color="primary" router :to="'/login'">
+            <v-btn v-if="!$store.state.isUserLoggedIn" flat color="primary" router :to="'/login'">
                 <span>login</span>
             </v-btn>
 
-            <v-btn flat color="primary" router :to="'/signup'">
+            <v-btn v-if="!$store.state.isUserLoggedIn" flat color="primary" router :to="'/signup'">
                 <span>sign up</span>
             </v-btn>
         </v-toolbar>
 
-        <v-navigation-drawer app class="secondary" v-model="drawer">
+        <v-navigation-drawer
+            v-if="$store.state.isUserLoggedIn"
+            app
+            class="secondary"
+            v-model="drawer"
+        >
             <v-layout column align-center>
                 <v-flex class="mt-5">
                     <v-avatar size="100">
                         <img src="/avatar-placeholder.jpeg">
                     </v-avatar>
-                    <p class="background--text text-xs-center subheading mt-1">User</p>
+                    <p
+                        class="background--text text-xs-center subheading mt-1"
+                    >{{ $store.state.user.username }}</p>
                 </v-flex>
             </v-layout>
 
@@ -62,13 +69,19 @@
             return {
                 drawer: false,
                 links: [
-                    { icon: "dashboard", text: "Dashboard", route: "/" },
+                    { icon: "dashboard", text: "Dashboard", route: "/dashboard" },
                     { icon: "info", text: "About", route: "/about" }
                 ]
             };
         },
 
-        methods: {}
+        methods: {
+            logout() {
+                this.$store.dispatch("setToken", null);
+                this.$store.dispatch("setUser", null);
+                this.$router.push("/");
+            }
+        }
     };
 </script>
 

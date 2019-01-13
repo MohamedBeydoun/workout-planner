@@ -26,6 +26,9 @@
                         prepend-icon="vpn_key"
                         required
                     ></v-text-field>
+
+                    <div class="red--text" v-html="error"></div>
+
                     <v-btn
                         class="background mx-0 mt-3 primary--text text-uppercase"
                         @click="login"
@@ -57,6 +60,7 @@
                     });
                     this.$store.dispatch("setToken", response.data.token);
                     this.$store.dispatch("setUser", response.data.user);
+                    this.$router.push("/dashboard");
                 } catch (err) {
                     this.error = err.response.data.error;
                 }
