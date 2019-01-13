@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
-let mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const app = express();
+
+let User = require("./models/user");
+let Plan = require("./models/plan");
 
 mongoose.connect("mongodb://localhost/workout-planner", { useNewUrlParser: true });
 
