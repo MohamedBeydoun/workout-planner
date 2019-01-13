@@ -5,6 +5,7 @@
             <v-card color="primary ma-5 px-3 py-5">
                 <v-form class="px-3" ref="form">
                     <v-text-field
+                        type="email"
                         name="email"
                         color="background"
                         class="mb-3"
@@ -15,6 +16,7 @@
                         required
                     ></v-text-field>
                     <v-text-field
+                        type="password"
                         name="password"
                         color="background"
                         class="mb-3"
