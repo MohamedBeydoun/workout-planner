@@ -12,6 +12,7 @@
                         label="Username"
                         v-model="username"
                         prepend-icon="create"
+                        @keyup.enter="signup"
                         required
                     ></v-text-field>
                     <v-text-field
@@ -20,6 +21,7 @@
                         color="background"
                         class="mb-3"
                         label="Email"
+                        @keyup.enter="signup"
                         v-model="email"
                         prepend-icon="person"
                         required
@@ -30,13 +32,17 @@
                         color="background"
                         class="mb-3"
                         label="Password"
+                        @keyup.enter="signup"
                         v-model="password"
                         prepend-icon="vpn_key"
                         required
                     ></v-text-field>
+
+                    <!-- printing error -->
+                    <div v-show="errorOccured" class="red--text" v-html="error"></div>
+
                     <v-btn
                         class="background mx-0 mt-3 primary--text text-uppercase"
-                        :loading="isLoading"
                         @click="signup"
                     >sign up</v-btn>
                 </v-form>
@@ -54,18 +60,24 @@
                 username: "",
                 email: "",
                 password: "",
-                isLoading: false
+                error: "",
+                errorOccured: false
             };
         },
 
         methods: {
             async signup() {
-                const response = await AuthenticationService.register({
-                    username: this.username,
-                    email: this.email,
-                    password: this.password
-                });
-                console.log(response.data);
+                try {
+                    await AuthenticationService.register({
+                        username: this.username,
+                        email: this.email,
+                        password: this.password
+                    });
+                    this.errorOccured = false;
+                } catch (err) {
+                    this.error = err.response.data.error;
+                    this.errorOccured = true;
+                }
             }
         }
     };

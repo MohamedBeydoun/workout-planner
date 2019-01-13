@@ -3,9 +3,10 @@ const Joi = require("joi");
 module.exports = {
 	register(req, res, next) {
 		const schema = {
+			username: Joi.string(),
 			email: Joi.string().email(),
 			password: Joi.string().regex(
-				new RegExp("^[a-zA-Z0-9]{8-32}$")
+				new RegExp("^[a-zA-Z0-9]{8,32}$")
 			),
 		}
 
@@ -16,7 +17,7 @@ module.exports = {
 					res.status(400).send({
 						error: "You must provide a valid email address"
 					})
-					break;
+					break
 				case "password":
 					res.status(400).send({
 						error: `The password provided failed to match the following rules:
@@ -26,7 +27,7 @@ module.exports = {
 						2. It must be at least 8 characters in length and not greater than 32 characters in length
 						`
 					})
-					break;
+					break
 				default:
 					res.status(400).send({
 						error: "Invalid registration information"
