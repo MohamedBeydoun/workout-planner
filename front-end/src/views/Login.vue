@@ -40,7 +40,8 @@
 </template>
 
 <script>
-    import AuthenticationService from "@/services/AuthenticationService.js";
+    // import AuthenticationService from "@/services/AuthenticationService.js";
+    import Api from "@/plugins/Api";
 
     export default {
         data() {
@@ -54,7 +55,7 @@
         methods: {
             async login() {
                 try {
-                    const response = await AuthenticationService.login({
+                    const response = await Api().post("/login", {
                         email: this.email,
                         password: this.password
                     });
@@ -68,6 +69,3 @@
         }
     };
 </script>
-
-<style>
-</style>

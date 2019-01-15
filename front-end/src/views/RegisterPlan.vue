@@ -28,17 +28,11 @@
                         v-model="target"
                         required
                     ></v-text-field>
-                    <h1>Schedule</h1>
-                    <v-text-field
-                        name="bodyparts"
-                        color="background"
-                        class="mb-3"
-                        label="Body Parts"
-                        v-model="bodyParts"
-                        required
-                    ></v-text-field>
                 </v-form>
             </v-card>
+            <!-- add separate forms for each day i.e. 7 different forms and handle no inputs -->
+            <h1 class="primary">Schedule</h1>
+            <!-- </v-card> -->
         </v-container>
     </div>
 </template>
@@ -49,10 +43,7 @@
             return {
                 name: "",
                 difficulty: "",
-                target: "",
-                bodyParts: "",
-                date: "",
-                workouts: []
+                target: ""
             };
         }
     };

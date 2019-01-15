@@ -58,12 +58,20 @@
             </v-layout>
 
             <v-list>
-                <v-list-tile :key="link.text" v-for="link in links" router :to="link.route">
+                <v-list-tile router to="/dashboard">
                     <v-list-tile-action>
-                        <v-icon class="background--text">{{ link.icon }}</v-icon>
+                        <v-icon class="background--text">dashboard</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title class="background--text">{{ link.text }}</v-list-tile-title>
+                        <v-list-tile-title class="text-uppercase background--text">dashboard</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
+                <v-list-tile router to="/registerplan">
+                    <v-list-tile-action>
+                        <v-icon class="background--text">add</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title class="text-uppercase background--text">register plan</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>

@@ -9,6 +9,15 @@ Vue.config.productionTip = false;
 
 sync(store, router);
 
+// router.beforeEach((to, from, next) => {
+//     if (!store.state.isUserLoggedin && (to.path === '/dashboard' || to.path === "/registerplan")) {
+//         next('/login');
+//     }
+//     else {
+//         next();
+//     }
+// });
+
 new Vue({
     router,
     store,

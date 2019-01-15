@@ -52,7 +52,8 @@
 </template>
 
 <script>
-    import AuthenticationService from "@/services/AuthenticationService";
+    // import AuthenticationService from "@/services/AuthenticationService";
+    import Api from "@/plugins/Api";
 
     export default {
         data() {
@@ -68,7 +69,7 @@
         methods: {
             async signup() {
                 try {
-                    const response = await AuthenticationService.register({
+                    const response = await Api().post("/register", {
                         username: this.username,
                         email: this.email,
                         password: this.password

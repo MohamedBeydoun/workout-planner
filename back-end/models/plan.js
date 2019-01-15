@@ -6,19 +6,18 @@ let planSchema = new mongoose.Schema({
     name: String,
     difficulty: String,
     target: String,
+    //schedule is an array of objects
     schedule: [{
         title: String,
         date: String,
-        workouts: [{
-            name: String,
-            reps: String,
-            sets: String
-        }]
+        //workouts is an array of workouts --> can add reps and sets?
+        workouts: [
+            //lookup how this should look
+        ]
     }],
-    mealPlan: [{
-        title: String,
-        meal: []
-    }]
+    mealPlan: [
+        //do mealPlan model
+    ]
 });
 
 module.exports = mongoose.model("Plan", planSchema);
