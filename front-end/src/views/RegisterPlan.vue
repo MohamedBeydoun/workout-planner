@@ -58,9 +58,6 @@
                                 <ul :style="{listStyle: 'none'}">
                                     <li
                                         class="background--text text-uppercase"
-                                    >training: {{ day.bodyPart }}</li>
-                                    <li
-                                        class="background--text text-uppercase"
                                         :key="j"
                                         v-for="(workout, j) in day.workouts"
                                     >{{ workout }}</li>
@@ -133,8 +130,27 @@
                 array.push(item);
                 // this.$refs.form.reset();
             },
-            sendPlan() {
-                //
+            async sendPlan() {
+                try {
+                    const response = await Api().post("/newPlan", {
+                        name: this.name,
+                        target: this.target,
+                        difficulty: this.difficulty,
+                        days: this.days,
+                        username: this.$store.state.user.username
+                    });
+                    console.log(response.data.message);
+                } catch (err) {
+                    // this.error = err.response.data.error;
+                    console.log("Error");
+                }
+                // console.log(
+                //     this.name,
+                //     this.target,
+                //     this.difficulty,
+                //     this.days[0].day,
+                //     this.$store.state.user.username
+                // );
             }
         }
     };
