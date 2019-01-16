@@ -9,7 +9,7 @@ let planSchema = new mongoose.Schema({
     //schedule is an array of objects
     schedule: [{
         title: String,
-        date: String,
+        // date: String,
         //workouts is an array of workouts --> can add reps and sets?
         workouts: [
             //lookup how this should look
