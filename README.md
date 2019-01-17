@@ -13,6 +13,11 @@
 
 ## Technologies
 
+#### Requirments
+* [NodeJS/npm](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
+* [Vue CLI](https://cli.vuejs.org/)
+
 ### Backend
 
 ### Frontend
