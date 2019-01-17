@@ -17,6 +17,8 @@ module.exports = {
                 username: username,
             });
 
+            console.log(user);
+
             if (!user) {
                 return res.status(403).send({
                     error: "Not logged in",
