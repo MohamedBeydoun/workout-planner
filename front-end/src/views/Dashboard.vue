@@ -10,7 +10,7 @@
                 class="subtext2--text text-xs-center text-uppercase mb-5 title"
             >See current and previous plans</h6>
             <v-layout wrap row>
-                <v-flex :key="plan.name" v-for="plan in plans" xs12 sm6 md4 lg3>
+                <v-flex :key="i" v-for="(plan, i) in plans" xs12 sm6 md4 lg3>
                     <v-card class="primary text-xs-center ma-3" flat>
                         <v-card-text>
                             <div class="my-1 text-uppercase subtext1--text">{{ plan.name }}</div>
@@ -34,47 +34,56 @@
 </template>
 
 <script>
+    import Api from "@/plugins/Api";
+
     export default {
         data() {
             return {
+                plans: []
                 //dummy data
-                user: {
-                    name: "username"
-                },
-
-                plans: [
-                    {
-                        name: "push-pull",
-                        difficulty: "intermediate",
-                        target: "muscle gain",
-                        id: 1
-                    },
-                    {
-                        name: "shred",
-                        difficulty: "advanced",
-                        target: "weight loss",
-                        id: 2
-                    },
-                    {
-                        name: "all day every day",
-                        difficulty: "advanced",
-                        target: "muscle gain",
-                        id: 3
-                    },
-                    {
-                        name: "starter",
-                        difficulty: "beginner",
-                        target: "weight gain",
-                        id: 4
-                    }
-                ]
+                //     user: {
+                //         name: "username"
+                //     },
+                //     plans: [
+                //         {
+                //             name: "push-pull",
+                //             difficulty: "intermediate",
+                //             target: "muscle gain",
+                //             id: 1
+                //         },
+                //         {
+                //             name: "shred",
+                //             difficulty: "advanced",
+                //             target: "weight loss",
+                //             id: 2
+                //         },
+                //         {
+                //             name: "all day every day",
+                //             difficulty: "advanced",
+                //             target: "muscle gain",
+                //             id: 3
+                //         },
+                //         {
+                //             name: "starter",
+                //             difficulty: "beginner",
+                //             target: "weight gain",
+                //             id: 4
+                //         }
+                //     ]
             };
         },
 
-        methods: {},
-
         created() {
-            //get plan data from backend
+            if (this.$route.params.id != this.$store.state.user.username) {
+                this.$router.push("/");
+            } else {
+                Api()
+                    .get("/dashboard/" + this.$store.state.user.username)
+                    .then(data => {
+                        this.plans = data.data;
+                        console.log(this.plans);
+                    });
+            }
         }
     };
 </script>

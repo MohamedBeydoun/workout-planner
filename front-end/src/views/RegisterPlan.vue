@@ -69,6 +69,8 @@
                 <v-btn
                     class="primary mx-0 mt-5 background--text text-uppercase"
                     @click="sendPlan"
+                    router
+                    :to="'/dashboard/' + this.$store.state.user.username"
                 >Submit</v-btn>
             </v-card>
         </v-container>
@@ -139,18 +141,10 @@
                         days: this.days,
                         username: this.$store.state.user.username
                     });
-                    console.log(response.data.message);
                 } catch (err) {
                     // this.error = err.response.data.error;
                     console.log("Error");
                 }
-                // console.log(
-                //     this.name,
-                //     this.target,
-                //     this.difficulty,
-                //     this.days[0].day,
-                //     this.$store.state.user.username
-                // );
             }
         }
     };

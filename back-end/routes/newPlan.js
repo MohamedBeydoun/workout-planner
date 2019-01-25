@@ -41,14 +41,6 @@ module.exports = {
                     user.plans.push(plan._id);
                     // console.log(user.plans);
                     user.save();
-                    // Plan.find({ '_id': { $in: user.plans } }, function (err, plans) {
-                    //     if (err) {
-                    //         console.log(err);
-                    //     } else {
-                    //         console.log(plans[1].schedule[0]);
-
-                    //     }
-                    // });
                 }
             });
 
@@ -56,6 +48,29 @@ module.exports = {
             res.status(400).send({
                 error: "This username or email is already in use",
             });
+        }
+    },
+
+    async findPlans(req, res) {
+        try {
+            // console.log(req.params);
+            const user = await User.findOne({
+                username: req.params.id,
+            });
+
+            // console.log(user);
+
+            await Plan.find({ '_id': { $in: user.plans } }, function (err, plans) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(plans);
+                    res.send(plans);
+                }
+            });
+        }
+        catch (err) {
+            console.log(err);
         }
     }
 }

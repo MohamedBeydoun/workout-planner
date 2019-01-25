@@ -19,7 +19,7 @@ export default new Router({
             component: Home
         },
         {
-            path: "/dashboard",
+            path: "/dashboard/:id",
             component: Dashboard
         },
         {
@@ -41,6 +41,10 @@ export default new Router({
         {
             path: "/registerplan",
             component: RegisterPlan
+        },
+        {
+            path: "*",
+            component: Home
         }
     ]
 });

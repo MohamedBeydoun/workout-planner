@@ -13,7 +13,7 @@
                 color="primary"
                 v-if="$store.state.isUserLoggedIn"
                 router
-                to="/dashboard"
+                :to="'/dashboard/' + $store.state.user.username"
                 flat
             >dashboard</v-btn>
 
@@ -58,7 +58,7 @@
             </v-layout>
 
             <v-list>
-                <v-list-tile router to="/dashboard">
+                <v-list-tile router to="'/dashboard/' + $store.state.user.username">
                     <v-list-tile-action>
                         <v-icon class="background--text">dashboard</v-icon>
                     </v-list-tile-action>
@@ -85,7 +85,7 @@
             return {
                 drawer: false,
                 links: [
-                    { icon: "dashboard", text: "Dashboard", route: "/dashboard" }
+                    { icon: "dashboard", text: "Dashboard", route: "/dashboard/" }
                 ]
             };
         },

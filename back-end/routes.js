@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.post("/register", authenticationPolicy.register, authentication.register);
     app.post("/login", authentication.login);
     app.post("/newPlan", newPlan.newPlan);
+    app.get("/dashboard/:id", newPlan.findPlans);
 };
