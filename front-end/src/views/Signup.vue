@@ -77,7 +77,9 @@
                     this.errorOccured = false;
                     this.$store.dispatch("setToken", response.data.token);
                     this.$store.dispatch("setUser", response.data.user);
-                    this.$router.push("/dashboard/" + $store.state.user.username);
+                    this.$router.push(
+                        "/dashboard/" + this.$store.state.user.username
+                    );
                 } catch (err) {
                     this.error = err.response.data.error;
                     this.errorOccured = true;
