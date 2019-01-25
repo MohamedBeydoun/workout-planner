@@ -7,14 +7,16 @@ let planSchema = new mongoose.Schema({
     difficulty: String,
     target: String,
     //schedule is an array of objects
-    schedule: [{
-        title: String,
-        // date: String,
-        //workouts is an array of workouts --> can add reps and sets?
-        workouts: [
-            //lookup how this should look
-        ]
-    }],
+    schedule: [
+        // {
+        // title: String,
+        // // date: String,
+        // //workouts is an array of workouts --> can add reps and sets?
+        // workouts: [
+        //     //lookup how this should look
+        // ]
+        // }
+    ],
     mealPlan: [
         //do mealPlan model
     ]
