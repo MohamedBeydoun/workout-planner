@@ -21,7 +21,7 @@
                             <v-divider></v-divider>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn flat color="grey" router :to="'/plan/' + plan.id">
+                            <v-btn flat color="grey" router :to="'/plan/' + plan._id">
                                 <v-icon class="subtext1--text">view_module</v-icon>
                                 <span class="subtext1--text">see plan</span>
                             </v-btn>
@@ -81,7 +81,7 @@
                     .get("/dashboard/" + this.$store.state.user.username)
                     .then(data => {
                         this.plans = data.data;
-                        console.log(this.plans);
+                        console.log(this.plans[0]._id);
                     });
             }
         }

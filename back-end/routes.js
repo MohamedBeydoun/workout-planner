@@ -7,4 +7,5 @@ module.exports = (app) => {
     app.post("/login", authentication.login);
     app.post("/newPlan", newPlan.newPlan);
     app.get("/dashboard/:id", newPlan.findPlans);
+    app.get("/plan/:id", newPlan.displayPlan);
 };

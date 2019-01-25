@@ -72,5 +72,12 @@ module.exports = {
         catch (err) {
             console.log(err);
         }
+    },
+
+    async displayPlan(req, res) {
+        const plan = await Plan.findOne({
+            _id: req.params.id,
+        });
+        res.send(plan);
     }
 }
