@@ -11,7 +11,7 @@ module.exports = {
             let username = req.body.username;
 
             // console.log(username);
-            // console.log(days);
+            // console.log(req.body.meals);
 
             const user = await User.findOne({
                 username: username,
@@ -31,7 +31,8 @@ module.exports = {
                 name: req.body.name,
                 target: req.body.target,
                 difficulty: req.body.difficulty,
-                schedule: req.body.days
+                schedule: req.body.days,
+                meals: req.body.meals
             }, (err, plan) => {
                 if (err) {
                     console.log(err);
@@ -39,7 +40,7 @@ module.exports = {
                 else {
                     //push plan id to user
                     user.plans.push(plan._id);
-                    // console.log(user.plans);
+                    console.log(plan);
                     user.save();
                 }
             });
@@ -64,7 +65,7 @@ module.exports = {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(plans);
+                    // console.log(plans);
                     res.send(plans);
                 }
             });

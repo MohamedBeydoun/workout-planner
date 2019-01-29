@@ -26,11 +26,11 @@
             </v-expansion-panel>
 
             <!-- Meal plan expansion panel -->
-            <!-- <h1 class="display-1 text-uppercase white--text mt-5 mb-1">meal plan</h1>
+            <h1 class="display-1 text-uppercase white--text mt-5 mb-1">meal plan</h1>
             <v-expansion-panel expand>
                 <v-expansion-panel-content
                     :key="i"
-                    v-for="(meal, i) in plan.mealPlan"
+                    v-for="(meal, i) in plan.meals"
                     class="primary background--text"
                 >
                     <div slot="header" class="text-uppercase">{{ meal.title }}</div>
@@ -38,13 +38,13 @@
                         <v-card-text class="px-4 grey--text subtext1">
                             <div
                                 :key="i"
-                                v-for="(mealPart, i) in meal.meal"
+                                v-for="(mealPart, i) in meal.parts"
                                 class="my-1"
                             >{{ mealPart }}</div>
                         </v-card-text>
                     </v-card>
                 </v-expansion-panel-content>
-            </v-expansion-panel>-->
+            </v-expansion-panel>
         </v-container>
     </div>
 </template>
@@ -157,7 +157,7 @@
                 .get("/plan/" + this.$route.params.id)
                 .then(data => {
                     this.plan = data.data;
-                    // console.log(this.plan);
+                    // console.log(this.plan.meals);
                 });
         }
     };

@@ -81,7 +81,7 @@
                     .get("/dashboard/" + this.$store.state.user.username)
                     .then(data => {
                         this.plans = data.data;
-                        console.log(this.plans[0]._id);
+                        // console.log(this.plans[0]._id);
                     });
             }
         }

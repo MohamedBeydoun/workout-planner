@@ -17,7 +17,7 @@ let planSchema = new mongoose.Schema({
         // ]
         // }
     ],
-    mealPlan: [
+    meals: [
         //do mealPlan model
     ]
 });
