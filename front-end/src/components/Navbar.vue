@@ -58,7 +58,7 @@
             </v-layout>
 
             <v-list>
-                <v-list-tile router to="'/dashboard/' + $store.state.user.username">
+                <v-list-tile router :to="'/dashboard/' + $store.state.user.username">
                     <v-list-tile-action>
                         <v-icon class="background--text">dashboard</v-icon>
                     </v-list-tile-action>
