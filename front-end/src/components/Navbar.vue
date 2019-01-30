@@ -13,7 +13,7 @@
                 color="primary"
                 v-if="$store.state.isUserLoggedIn"
                 router
-                :to="'/dashboard/' + $store.state.user.username"
+                :to="'/' + $store.state.user.username +'/dashboard'"
                 flat
             >dashboard</v-btn>
 
@@ -22,7 +22,7 @@
                 color="primary"
                 v-if="$store.state.isUserLoggedIn"
                 router
-                to="/registerplan"
+                :to="'/' + $store.state.user.username + '/registerplan'"
                 flat
             >register plan</v-btn>
 
@@ -58,7 +58,7 @@
             </v-layout>
 
             <v-list>
-                <v-list-tile router :to="'/dashboard/' + $store.state.user.username">
+                <v-list-tile router :to="'/' + $store.state.user.username +'/dashboard'">
                     <v-list-tile-action>
                         <v-icon class="background--text">dashboard</v-icon>
                     </v-list-tile-action>
@@ -66,7 +66,7 @@
                         <v-list-tile-title class="text-uppercase background--text">dashboard</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile router to="/registerplan">
+                <v-list-tile router :to="'/' + $store.state.user.username + '/registerPlan'">
                     <v-list-tile-action>
                         <v-icon class="background--text">add</v-icon>
                     </v-list-tile-action>
@@ -83,10 +83,7 @@
     export default {
         data() {
             return {
-                drawer: false,
-                links: [
-                    { icon: "dashboard", text: "Dashboard", route: "/dashboard/" }
-                ]
+                drawer: false
             };
         },
 

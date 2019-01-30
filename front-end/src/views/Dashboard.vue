@@ -41,7 +41,12 @@
                             <v-divider></v-divider>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn flat color="grey" router :to="'/plan/' + plan._id">
+                            <v-btn
+                                flat
+                                color="grey"
+                                router
+                                :to="'/' + $route.params.user + '/plan/' + plan._id"
+                            >
                                 <v-icon class="subtext1--text">view_module</v-icon>
                                 <span class="subtext1--text">see plan</span>
                             </v-btn>
@@ -73,7 +78,7 @@
         },
 
         created() {
-            if (this.$route.params.id != this.$store.state.user.username) {
+            if (this.$route.params.user != this.$store.state.user.username) {
                 this.$router.push("/");
             } else {
                 Api()

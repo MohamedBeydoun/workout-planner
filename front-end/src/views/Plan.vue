@@ -75,7 +75,7 @@
                     )
                     .then(
                         this.$router.push(
-                            "/dashboard/" + this.$store.state.user.username
+                            "/" + this.$store.state.user.username + "/dashboard/"
                         )
                     );
             }

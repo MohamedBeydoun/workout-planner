@@ -19,7 +19,7 @@ export default new Router({
             component: Home
         },
         {
-            path: "/dashboard/:id",
+            path: "/:user/dashboard",
             component: Dashboard
         },
         {
@@ -27,7 +27,7 @@ export default new Router({
             component: About
         },
         {
-            path: "/plan/:id",
+            path: "/:user/plan/:id",
             component: Plan
         },
         {
@@ -39,7 +39,7 @@ export default new Router({
             component: Signup
         },
         {
-            path: "/registerplan",
+            path: "/:user/registerplan",
             component: RegisterPlan
         },
         {

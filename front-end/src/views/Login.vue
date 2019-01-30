@@ -40,7 +40,6 @@
 </template>
 
 <script>
-    // import AuthenticationService from "@/services/AuthenticationService.js";
     import Api from "@/plugins/Api";
 
     export default {
@@ -62,7 +61,7 @@
                     this.$store.dispatch("setToken", response.data.token);
                     this.$store.dispatch("setUser", response.data.user);
                     this.$router.push(
-                        "/dashboard/" + this.$store.state.user.username
+                        "/" + this.$store.state.user.username + "/dashboard"
                     );
                 } catch (err) {
                     this.error = err.response.data.error;
