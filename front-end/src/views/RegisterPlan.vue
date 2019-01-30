@@ -103,7 +103,7 @@
                     class="primary mx-0 mt-5 background--text text-uppercase"
                     @click="sendPlan"
                     router
-                    :to="'/dashboard/' + this.$store.state.user.username"
+                    :to="'/' + this.$store.state.user.username + '/dashboard'"
                 >Submit</v-btn>
             </div>
         </v-container>

@@ -20,7 +20,8 @@ export default new Router({
         },
         {
             path: "/:user/dashboard",
-            component: Dashboard
+            component: Dashboard,
+            secure: true
         },
         {
             path: "/about",
@@ -28,7 +29,8 @@ export default new Router({
         },
         {
             path: "/:user/plan/:id",
-            component: Plan
+            component: Plan,
+            secure: true
         },
         {
             path: "/login",
@@ -40,7 +42,8 @@ export default new Router({
         },
         {
             path: "/:user/registerplan",
-            component: RegisterPlan
+            component: RegisterPlan,
+            secure: true
         },
         {
             path: "*",
