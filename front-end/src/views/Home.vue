@@ -8,7 +8,7 @@
             >Welcome to workout planner</h1>
             <h6
                 class="title text-xs-center subtext2--text"
-            >A platform that helps you organize you workout and meal schedule</h6>
+            >A platform that helps you organize your workout and meal plans</h6>
         </v-container>
     </div>
 </template>

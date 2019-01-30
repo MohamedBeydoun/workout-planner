@@ -9,7 +9,7 @@
                         name="name"
                         color="background"
                         class="mb-3"
-                        label="Name"
+                        label="Plan Name"
                         v-model="name"
                         required
                     ></v-text-field>
@@ -81,7 +81,7 @@
                                 color="background"
                                 v-model="mealPlaceholders[i]"
                                 label="Meal"
-                                @keyup.enter="addWorkout(meal.parts, mealPlaceholders[i])"
+                                @keyup.enter="addWorkout(meal.parts, mealPlaceholders[i], i)"
                                 hint="Press enter to continue"
                             ></v-text-field>
 
@@ -187,6 +187,8 @@
             addWorkout(array, item) {
                 array.push(item);
                 // this.$refs.form.reset();
+                this.workoutPlaceholders = ["", "", "", "", "", "", ""];
+                this.mealPlaceholders = ["", "", "", "", ""];
             },
             async sendPlan() {
                 try {
