@@ -9,6 +9,24 @@
             <h6
                 class="subtext2--text text-xs-center text-uppercase mb-5 title"
             >See current and previous plans</h6>
+
+            <v-layout>
+                <v-flex v-if="plans.length != 0">
+                    <v-tooltip top>
+                        <v-btn small flat color="grey" slot="activator" @click="sortBy('name')">
+                            <v-icon left small>folder</v-icon>
+                            <span class="caption text-lowercase">by plan name</span>
+                        </v-btn>
+                        <span>sort plans by name</span>
+                    </v-tooltip>
+                </v-flex>
+                <v-flex v-if="plans.length == 0">
+                    <h1
+                        class="text-xs-center primary--text"
+                    >You currently have no plans. Head to "Register Plan" to make one!</h1>
+                </v-flex>
+            </v-layout>
+
             <v-layout wrap row>
                 <v-flex :key="i" v-for="(plan, i) in plans" xs12 sm6 md4 lg3>
                     <v-card class="primary text-xs-center ma-3" flat>
@@ -71,6 +89,12 @@
                 //         }
                 //     ]
             };
+        },
+
+        methods: {
+            sortBy(prop) {
+                this.plans.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
+            }
         },
 
         created() {
