@@ -45,6 +45,11 @@
                     </v-card>
                 </v-expansion-panel-content>
             </v-expansion-panel>
+            <div class="text-xs-center mt-5">
+                <v-btn flat color="primary" @click="deletePlan()">
+                    <v-icon class="primary--text">delete</v-icon>delete plan
+                </v-btn>
+            </div>
         </v-container>
     </div>
 </template>
@@ -56,100 +61,24 @@
         data() {
             return {
                 plan: ""
-                //dummy data
-                // plan: {
-                //     name: "push-pull",
-                //     difficulty: "intermediate",
-                //     target: "muscle gain",
-                //     id: this.$route.params.id,
-                //     schedule: [
-                //         {
-                //             date: "monday",
-                //             title: "push",
-                //             workouts: [
-                //                 { name: "bench press", sets: 3, reps: 8 },
-                //                 { name: "incline bench press", sets: 3, reps: 8 },
-                //                 { name: "dumbell flyes", sets: 2, reps: 12 },
-                //                 { name: "shoulder press", sets: 3, reps: 6 },
-                //                 { name: "skull crushers", sets: 3, reps: 10 }
-                //             ]
-                //         },
-                //         {
-                //             date: "tuesday",
-                //             title: "pull",
-                //             workouts: [
-                //                 { name: "deadlift", sets: 3, reps: 6 },
-                //                 { name: "pullups", sets: 2, reps: 10 },
-                //                 { name: "lat pulldown", sets: 3, reps: 8 },
-                //                 { name: "bicep curls", sets: 3, reps: 10 },
-                //                 { name: "skull crushers", sets: 3, reps: 10 },
-                //                 { name: "wrist curls", sets: 3, reps: 12 }
-                //             ]
-                //         },
-                //         {
-                //             date: "wednesdy",
-                //             title: "legs",
-                //             workouts: [
-                //                 { name: "squats", sets: 3, reps: 6 },
-                //                 { name: "leg curl", sets: 2, reps: 10 },
-                //                 { name: "leg press", sets: 3, reps: 8 },
-                //                 { name: "hamstring curls", sets: 3, reps: 10 },
-                //                 { name: "calf raises", sets: 3, reps: 10 }
-                //             ]
-                //         },
-                //         {
-                //             date: "thrusday",
-                //             title: "cardio",
-                //             workouts: [{ name: "running", sets: 1, reps: 2 }]
-                //         },
-                //         {
-                //             date: "others",
-                //             title: "repeat",
-                //             workouts: [{ name: "N/A" }]
-                //         }
-                //     ],
-                //         mealPlan: [
-                //             {
-                //                 title: "breakfast",
-                //                 meal: [
-                //                     "egg whites",
-                //                     "lean meat",
-                //                     "oatmeal",
-                //                     "blueberries"
-                //                 ]
-                //             },
-                //             {
-                //                 title: "meal 2",
-                //                 meal: ["chicken", "white rice", "broccoli"]
-                //             },
-                //             {
-                //                 title: "meal 3",
-                //                 meal: ["lean turkey", "sweet potato", "asparagus"]
-                //             },
-                //             {
-                //                 title: "post-workout",
-                //                 meal: ["whey protein shake"]
-                //             },
-                //             {
-                //                 title: "afternoon snack",
-                //                 meal: ["bagel", "almond butter"]
-                //             },
-                //             {
-                //                 title: "dinner",
-                //                 meal: [
-                //                     "sirloin steak",
-                //                     "sweet potato",
-                //                     "green beans",
-                //                     "almonds"
-                //                 ]
-                //             },
-                //             {
-                //                 title: "evening snack",
-                //                 meal: ["egg whites", "almond butter"]
-                //             }
-                //         ]
-                //     }
             };
+        },
+
+        methods: {
+            deletePlan() {
+                Api()
+                    .delete(
+                        "/plan/" +
+                            this.$store.state.user.username +
+                            "/" +
+                            this.$route.params.id
+                    )
+                    .then(
+                        this.$router.push(
+                            "/dashboard/" + this.$store.state.user.username
+                        )
+                    );
+            }
         },
 
         created() {

@@ -4,20 +4,11 @@ const User = require("../models/user");
 module.exports = {
     async newPlan(req, res) {
         try {
-            // let name = req.body.name;
-            // let target = req.body.target;
-            // let difficulty = req.body.difficulty;
-            // let days = req.body.days;
             let username = req.body.username;
-
-            // console.log(username);
-            // console.log(req.body.meals);
 
             const user = await User.findOne({
                 username: username,
             });
-
-            // console.log(user);
 
             //check if user is registered
             if (!user) {
@@ -40,6 +31,7 @@ module.exports = {
                 else {
                     //push plan id to user
                     user.plans.push(plan._id);
+                    console.log("making the plan now")
                     console.log(plan);
                     user.save();
                 }
@@ -54,19 +46,16 @@ module.exports = {
 
     async findPlans(req, res) {
         try {
-            // console.log(req.params);
             const user = await User.findOne({
                 username: req.params.id,
             });
 
-            // console.log(user);
-
-            await Plan.find({ '_id': { $in: user.plans } }, function (err, plans) {
+            await Plan.find({ '_id': { $in: user.plans } }, function (err, foundPlans) {
                 if (err) {
                     console.log(err);
-                } else {
-                    // console.log(plans);
-                    res.send(plans);
+                }
+                else {
+                    res.send(foundPlans);
                 }
             });
         }
@@ -80,5 +69,35 @@ module.exports = {
             _id: req.params.id,
         });
         res.send(plan);
+    },
+
+    async deletePlan(req, res) {
+        try {
+
+            const user = await User.findOne({
+                username: req.params.user,
+            });
+
+            if (!user) {
+                console.log("User not found")
+            }
+
+            await Plan.find({ "_id": req.params.id }, function (err, plan) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    user.plans.splice(user.plans.indexOf(plan._id), 1);
+                    Plan.findOneAndDelete(plan._id, (err) => {
+                        console.log(err);
+                    })
+                    user.save();
+                }
+            });
+
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 }

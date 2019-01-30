@@ -11,16 +11,18 @@
             >See current and previous plans</h6>
 
             <v-layout>
-                <v-flex v-if="plans.length != 0">
-                    <v-tooltip top>
-                        <v-btn small flat color="grey" slot="activator" @click="sortBy('name')">
-                            <v-icon left small>folder</v-icon>
-                            <span class="caption text-lowercase">by plan name</span>
-                        </v-btn>
-                        <span>sort plans by name</span>
-                    </v-tooltip>
+                <v-flex v-if="loaded === true && plans.length != 0">
+                    <v-btn small flat color="grey" slot="activator" @click="sortBy('name')">
+                        <v-icon left small>folder</v-icon>
+                        <span class="caption text-lowercase">sort by plan name</span>
+                    </v-btn>
+                    <v-btn small flat color="grey" slot="activator">
+                        <v-icon left small>folder</v-icon>
+                        <span class="caption text-lowercase">sort by (to be done)</span>
+                    </v-btn>
+                    <!-- <span>sort plans by name</span> -->
                 </v-flex>
-                <v-flex v-if="plans.length == 0">
+                <v-flex v-if="loaded === true && plans.length === 0">
                     <h1
                         class="text-xs-center primary--text"
                     >You currently have no plans. Head to "Register Plan" to make one!</h1>
@@ -57,43 +59,16 @@
     export default {
         data() {
             return {
-                plans: []
-                //dummy data
-                //     user: {
-                //         name: "username"
-                //     },
-                //     plans: [
-                //         {
-                //             name: "push-pull",
-                //             difficulty: "intermediate",
-                //             target: "muscle gain",
-                //             id: 1
-                //         },
-                //         {
-                //             name: "shred",
-                //             difficulty: "advanced",
-                //             target: "weight loss",
-                //             id: 2
-                //         },
-                //         {
-                //             name: "all day every day",
-                //             difficulty: "advanced",
-                //             target: "muscle gain",
-                //             id: 3
-                //         },
-                //         {
-                //             name: "starter",
-                //             difficulty: "beginner",
-                //             target: "weight gain",
-                //             id: 4
-                //         }
-                //     ]
+                plans: [],
+                loaded: false
             };
         },
 
         methods: {
             sortBy(prop) {
-                this.plans.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
+                this.plans.sort((a, b) =>
+                    a[prop].toLowerCase < b[prop].toLowerCase ? -1 : 1
+                );
             }
         },
 
@@ -105,7 +80,7 @@
                     .get("/dashboard/" + this.$store.state.user.username)
                     .then(data => {
                         this.plans = data.data;
-                        // console.log(this.plans[0]._id);
+                        this.loaded = true;
                     });
             }
         }
