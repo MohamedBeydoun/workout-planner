@@ -190,20 +190,21 @@
                 this.workoutPlaceholders = ["", "", "", "", "", "", ""];
                 this.mealPlaceholders = ["", "", "", "", ""];
             },
-            async sendPlan() {
-                try {
-                    const response = await Api().post("/newPlan", {
+            sendPlan() {
+                Api()
+                    .post("/newPlan", {
                         name: this.name,
                         target: this.target,
                         difficulty: this.difficulty,
                         days: this.days,
                         username: this.$store.state.user.username,
                         meals: this.meals
-                    });
-                } catch (err) {
-                    // this.error = err.response.data.error;
-                    console.log("Error");
-                }
+                    })
+                    .then(
+                        this.$router.push(
+                            "/" + this.$store.state.user.username + "/dashboard"
+                        )
+                    );
             }
         }
     };

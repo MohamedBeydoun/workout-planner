@@ -82,15 +82,22 @@ module.exports = {
                 console.log("User not found")
             }
 
-            await Plan.find({ "_id": req.params.id }, function (err, plan) {
+            Plan.find({ "_id": req.params.id }, function (err, plan) {
                 if (err) {
                     console.log(err);
                 }
                 else {
-                    user.plans.splice(user.plans.indexOf(plan._id), 1);
-                    Plan.findOneAndDelete(plan._id, (err) => {
-                        console.log(err);
-                    })
+                    console.log(user.plans);
+                    console.log(req.params.id);
+                    user.plans.splice(user.plans.indexOf(req.params.id), 1);
+                    console.log(user.plans);
+                    Plan.findOneAndDelete({ _id: req.params.id }, (err, deletedPlan) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(deletedPlan);
+                        }
+                    });
                     user.save();
                 }
             });

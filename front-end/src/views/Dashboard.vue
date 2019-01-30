@@ -22,7 +22,7 @@
                     </v-btn>
                     <!-- <span>sort plans by name</span> -->
                 </v-flex>
-                <v-flex v-if="loaded === true && plans.length === 0">
+                <v-flex v-show="loaded === true && plans.length === 0">
                     <h1
                         class="text-xs-center primary--text"
                     >You currently have no plans. Head to "Register Plan" to make one!</h1>
