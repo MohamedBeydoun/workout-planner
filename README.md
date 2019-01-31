@@ -53,6 +53,8 @@ VueJS is used to structure the frontend alongside Vuex and Vuetify. The latter t
 
 ![](/readme-images/plan.png?raw=true)
 
+![](/readme-images/openPlan.png?raw=true)
+
 ## Running the Project
 
 * Run `mongod` in its own terminal
