@@ -16,10 +16,10 @@
                         <v-icon left small>folder</v-icon>
                         <span class="caption text-lowercase">sort by plan name</span>
                     </v-btn>
-                    <v-btn small flat color="grey" slot="activator">
+                    <!-- <v-btn small flat color="grey" slot="activator">
                         <v-icon left small>folder</v-icon>
                         <span class="caption text-lowercase">sort by (to be done)</span>
-                    </v-btn>
+                    </v-btn>-->
                     <!-- <span>sort plans by name</span> -->
                 </v-flex>
                 <v-flex v-show="loaded === true && plans.length === 0">

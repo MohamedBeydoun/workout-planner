@@ -29,9 +29,29 @@ A platform for fitness enthousiasts to keep their workout schedules and meal pla
 
 ### Backend
 
+##### [Express](https://expressjs.com/)
+
+Express is used to manage the API's endpoints.
+
+##### [MongoDB](https://www.mongodb.com/)
+
+I used MongoDB in tandem with the mongoose library to send and query data from a database. The database stores user information: authentication information, workout routines, and meal plans.
+
 ### Frontend
 
+#### [VueJS](https://vuejs.org/)
+
+VueJS is used to structure the frontend alongside Vuex and Vuetify. The latter two are used for global state management and to provide a smoother user experience respectively. I use vue router to manage different front-end componnents while maintining a single page web application.
+
 ## Demo
+
+![](/readme-images/login.png?raw=true)
+
+![](/readme-images/dashboard.png?raw=true)
+
+![](/readme-images/newPlan.png?raw=true)
+
+![](/readme-images/plan.png?raw=true)
 
 ## Running the Project
 
