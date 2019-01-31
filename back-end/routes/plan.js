@@ -5,6 +5,23 @@ module.exports = {
     async newPlan(req, res) {
         try {
             let username = req.body.username;
+            let name, target, difficulty;
+
+            //placeholders for empty input fields
+            if (req.body.name == "")
+                name = "N/A";
+            else
+                name = req.body.name;
+
+            if (req.body.target == "")
+                target = "N/A";
+            else
+                target = req.body.target;
+
+            if (req.body.difficulty == "")
+                difficulty = "N/A";
+            else
+                difficulty = req.body.difficulty;
 
             const user = await User.findOne({
                 username: username,
@@ -19,9 +36,9 @@ module.exports = {
 
             //create plan
             Plan.create({
-                name: req.body.name,
-                target: req.body.target,
-                difficulty: req.body.difficulty,
+                name: name,
+                target: target,
+                difficulty: difficulty,
                 schedule: req.body.days,
                 meals: req.body.meals
             }, (err, plan) => {
@@ -95,10 +112,12 @@ module.exports = {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(deletedPlan);
+                            console.log(deletedPlan._id);
                         }
                     });
                     user.save();
+                    res.send();
+
                 }
             });
 
