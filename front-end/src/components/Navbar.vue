@@ -74,6 +74,14 @@
                         <v-list-tile-title class="text-uppercase background--text">register plan</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
+                <v-list-tile router :to="'/'">
+                    <v-list-tile-action>
+                        <v-icon class="background--text">cloud</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title class="text-uppercase background--text">public</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
             </v-list>
         </v-navigation-drawer>
     </nav>
