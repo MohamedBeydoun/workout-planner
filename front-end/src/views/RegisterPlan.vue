@@ -199,9 +199,11 @@
                         meals: this.meals
                     })
                     .then(
-                        this.$router.push(
-                            "/" + this.$store.state.user.username + "/dashboard"
-                        )
+                        setTimeout(() => {
+                            this.$router.push(
+                                "/" + this.$store.state.user.username + "/dashboard"
+                            );
+                        }, 200)
                     );
             }
         }

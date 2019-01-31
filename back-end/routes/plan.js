@@ -35,7 +35,7 @@ module.exports = {
             }
 
             //create plan
-            Plan.create({
+            const plan = await Plan.create({
                 name: name,
                 target: target,
                 difficulty: difficulty,
@@ -51,6 +51,7 @@ module.exports = {
                     console.log("making the plan now")
                     console.log(plan);
                     user.save();
+                    res.send();
                 }
             });
 
@@ -67,7 +68,7 @@ module.exports = {
                 username: req.params.id,
             });
 
-            await Plan.find({ '_id': { $in: user.plans } }, function (err, foundPlans) {
+            const plans = await Plan.find({ '_id': { $in: user.plans } }, function (err, foundPlans) {
                 if (err) {
                     console.log(err);
                 }
