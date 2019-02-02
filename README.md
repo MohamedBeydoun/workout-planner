@@ -59,5 +59,5 @@ VueJS is used to structure the frontend alongside Vuex and Vuetify. The latter t
 
 * Run `mongod` in its own terminal
 * Run `npm start` in the back-end folder
-* Run `npm run serve` in fornt-end folder
+* Run `npm run serve` in front-end folder
 * Navigate to [localhost:8080](http://localhost:8080)
